@@ -1,0 +1,88 @@
+<!--Iniciou às 15:55 02/01/2025-->
+<!--Finalizou às 16:11 02/01/2025-->
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form onsubmit="return validacao(event)">
+        <label for="nome">Nome</label>
+        <input type="text" name="nome" id="nome" required>
+
+        <label for="email">E-mail</label>
+        <input type="email" name="email" id="email" required>
+
+        <label for="senha">Senha</label>
+        <input type="password" name="senha" id="senha" required>
+
+        <label for="confirma-senha">Confirmação de Senha</label>
+        <input type="password" name="confirma-senha" id="confirma-senha" required>
+
+        <input type="submit" value="Enviar">
+    </form>
+
+    <script>
+        function validacao(event) {
+            let senha = document.getElementById("senha").value;
+            let confirmaSenha = document.getElementById("confirma-senha").value;
+
+            if (senha == confirmaSenha) {
+                alert("Cadastro realizado com sucesso!");
+                return true;
+            }else{
+                event.preventDefault();
+                alert("A confirmação de senha deve ser igual a senha");
+                return false;
+            }
+        }
+    </script>
+</body>
+</html>
+
+<!--Solução do CHAT GPT a seguir, peguei a parte as 3 linhas que usam event para corrigir a minha solução -->
+
+<!--
+    <html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <form onsubmit="return validacao(event)">
+            <label for="nome">Nome</label>
+            <input type="text" name="nome" id="nome" required>
+
+            <label for="email">E-mail</label>
+            <input type="email" name="email" id="email" required>
+
+            <label for="senha">Senha</label>
+            <input type="password" name="senha" id="senha" required>
+
+            <label for="confirma-senha">Confirmação de Senha</label>
+            <input type="password" name="confirma-senha" id="confirma-senha" required>
+
+            <input type="submit" value="Enviar">
+        </form>
+
+        <script>
+            function validacao(event) {
+                let senha = document.getElementById("senha").value;
+                let confirmaSenha = document.getElementById("confirma-senha").value;
+
+                if (senha === confirmaSenha) {
+                    alert("Cadastro realizado com sucesso!");
+                    return true;
+                } else {
+                    event.preventDefault(); // Impede o envio do formulário
+                    alert("A confirmação de senha deve ser igual a senha.");
+                    return false;
+                }
+            }
+        </script>
+    </body>
+    </html>
+
+-->

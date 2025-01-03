@@ -1,0 +1,186 @@
+<!--Iniciado às 16:22 02/01/2025-->
+<!--Finalizado às 16:47 02/01/2025-->
+
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" name="tarefa" id="tarefa" placeholder="Insira uma tarefa aqui">
+    <input type="button" value="Adicionar" onclick="adicionarTarefa()">
+
+    <ul id="lista-tarefas">
+        
+    </ul>
+    <script>
+        function removerTarefa(params) {
+            console.log(params);
+            let lista = document.getElementById("lista-tarefas");
+            lista.removeChild(params);
+        }
+
+        function adicionarTarefa() {
+            let tarefa = document.getElementById("tarefa").value;
+            if (tarefa.length > 0) {
+                let lista = document.getElementById("lista-tarefas");
+                let li = document.createElement("li");
+                let h5 = document.createElement("h5");
+                h5.innerHTML = tarefa;
+                li.appendChild(h5);
+                let button = document.createElement("button");
+                button.innerHTML = "Remover";
+                button.addEventListener("click", function(){removerTarefa(li);});
+                li.appendChild(button);
+                lista.appendChild(li); 
+            }else{
+                alert("Campo Não pode ser vazio!")
+            }
+            
+        }
+    </script>
+</body>
+</html>
+
+<!-- Melhoria do CHAT GPT a seguir. A linha para limpar o campo é importante e não coloquei no meu código, 
+    além disso o uso do .trim() remove espaços em branco, o que também é importante.-->
+
+<!--
+    <html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Lista de Tarefas</title>
+    </head>
+    <body>
+        <input type="text" name="tarefa" id="tarefa" placeholder="Insira uma tarefa aqui">
+        <input type="button" value="Adicionar" onclick="adicionarTarefa()">
+
+        <ul id="lista-tarefas">
+            
+        </ul>
+
+        <script>
+            function removerTarefa(tarefa) {
+                let lista = document.getElementById("lista-tarefas");
+                lista.removeChild(tarefa);
+            }
+
+            function adicionarTarefa() {
+                let tarefa = document.getElementById("tarefa").value.trim(); // Remove espaços extras
+                if (tarefa.length > 0) {
+                    let lista = document.getElementById("lista-tarefas");
+
+                    // Criar o item da lista
+                    let li = document.createElement("li");
+                    li.textContent = tarefa;
+
+                    // Criar botão de remover
+                    let button = document.createElement("button");
+                    button.textContent = "Remover";
+                    button.addEventListener("click", function() {
+                        removerTarefa(li);
+                    });
+
+                    // Adicionar botão ao item da lista
+                    li.appendChild(button);
+
+                    // Adicionar o item à lista
+                    lista.appendChild(li);
+
+                    // Limpar o campo de texto
+                    document.getElementById("tarefa").value = "";
+                } else {
+                    alert("O campo não pode estar vazio!");
+                }
+            }
+        </script>
+    </body>
+    </html>
+
+-->
+
+<!--Solução otimizada do CHAT GPT-->
+<!--
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Tarefas</title>
+    <style>
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        li {
+            display: flex;
+            justify-content: space-between;
+            margin: 5px 0;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            background-color: red;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: darkred;
+        }
+    </style>
+</head>
+<body>
+    <h1>Lista de Tarefas</h1>
+    <input type="text" id="tarefa" placeholder="Insira uma tarefa aqui">
+    <button id="adicionar">Adicionar</button>
+
+    <ul id="lista-tarefas">
+        // Tarefas aparecerão aqui 
+    </ul>
+
+    <script>
+        // Seleciona elementos
+        const inputTarefa = document.getElementById('tarefa');
+        const botaoAdicionar = document.getElementById('adicionar');
+        const listaTarefas = document.getElementById('lista-tarefas');
+
+        // Adiciona tarefa
+        botaoAdicionar.addEventListener('click', () => {
+            const tarefa = inputTarefa.value.trim();
+
+            if (tarefa === '') {
+                alert('O campo não pode estar vazio!');
+                return;
+            }
+
+            // Cria o elemento de tarefa
+            const li = document.createElement('li');
+            li.innerHTML = `
+                <span>${tarefa}</span>
+                <button class="remover">Remover</button>
+            `;
+
+            // Adiciona tarefa na lista
+            listaTarefas.appendChild(li);
+
+            // Limpa o campo
+            inputTarefa.value = '';
+        });
+
+        // Delegação de evento para remover tarefas
+        listaTarefas.addEventListener('click', (event) => {
+            if (event.target.classList.contains('remover')) {
+                const tarefa = event.target.closest('li');
+                listaTarefas.removeChild(tarefa);
+            }
+        });
+    </script>
+</body>
+</html>
+-->
