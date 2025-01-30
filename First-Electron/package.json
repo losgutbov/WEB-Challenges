@@ -1,14 +1,11 @@
 {
   "name": "first-electron",
   "version": "1.0.0",
-  "description": "",
   "main": "main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "electron ."
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "Augusto Lima dos Santos",
   "devDependencies": {
     "electron": "^34.0.2"
   }
